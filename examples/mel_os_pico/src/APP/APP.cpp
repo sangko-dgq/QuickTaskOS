@@ -16,7 +16,7 @@ static void led_task()
 void APP_Init()
 {
     appd_led = device_find("Led"); //检索到led实体
-    millisTaskManager.Register(led_task, 800);
+    millisTaskManager.Register(led_task, 100);
 }
 
 void APP_Update()

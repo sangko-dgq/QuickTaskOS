@@ -15,5 +15,7 @@ void setup()
 void loop()
 {
     APP_Update();
-    delay(800);
+
+    //can't add any delay to match millis() here ( millisTaskManager.Running(millis()) ）
+//    delay(800);
 }
