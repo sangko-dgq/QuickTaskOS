@@ -81,7 +81,6 @@ void setup()
 void loop()
 {
     APP_Update();
-    delay(800);
 }
 ```
 
