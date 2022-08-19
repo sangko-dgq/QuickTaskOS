@@ -85,7 +85,11 @@ void loop()
 }
 ```
 
-### 2. (ENV. : Arduino)
+### 2. (ENV. : STC32G)
+
+**TODO**
+
+### 3. (ENV. : STM32Fxx)
 
 **TODO**
 
