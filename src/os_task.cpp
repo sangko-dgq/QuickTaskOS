@@ -1,5 +1,5 @@
 
-#include "MillisTaskManager.h"
+#include "os_task.h"
 
 #ifndef NULL
 #   define NULL 0
@@ -13,7 +13,7 @@
   * @param  priorityEnable:设定是否开启优先级
   * @retval 无
   */
-MillisTaskManager::MillisTaskManager(bool
+OSTask::OSTask(bool
 priorityEnable)
 {
 PriorityEnable = priorityEnable;
@@ -26,7 +26,7 @@ Tail = NULL;
   * @param  无
   * @retval 无
   */
-MillisTaskManager::~MillisTaskManager()
+OSTask::~OSTask()
 {
     /*移动到链表头*/
     Task_t *now = Head;
@@ -54,7 +54,7 @@ MillisTaskManager::~MillisTaskManager()
   * @param  state:任务开关
   * @retval 任务节点地址
   */
-MillisTaskManager::Task_t *MillisTaskManager::Register(TaskFunction_t func, uint32_t timeMs, bool state)
+OSTask::Task_t *OSTask::Register(TaskFunction_t func, uint32_t timeMs, bool state)
 {
     /*寻找当前函数*/
     Task_t *task = Find(func);
@@ -106,7 +106,7 @@ MillisTaskManager::Task_t *MillisTaskManager::Register(TaskFunction_t func, uint
   * @param  func:任务函数指针
   * @retval 任务节点地址
   */
-MillisTaskManager::Task_t *MillisTaskManager::Find(TaskFunction_t func)
+OSTask::Task_t *OSTask::Find(TaskFunction_t func)
 {
     Task_t *now = Head;
     Task_t *task = NULL;
@@ -131,7 +131,7 @@ MillisTaskManager::Task_t *MillisTaskManager::Find(TaskFunction_t func)
   * @param  task:当前任务节点地址
   * @retval 前一个任务节点地址
   */
-MillisTaskManager::Task_t *MillisTaskManager::GetPrev(Task_t *task)
+OSTask::Task_t *OSTask::GetPrev(Task_t *task)
 {
     Task_t *now = Head;    //当前节点
     Task_t *prev = NULL;   //前一节点
@@ -169,7 +169,7 @@ MillisTaskManager::Task_t *MillisTaskManager::GetPrev(Task_t *task)
   * @param  func:任务函数指针
   * @retval true:成功 ; false:失败
   */
-bool MillisTaskManager::Logout(TaskFunction_t func)
+bool OSTask::Logout(TaskFunction_t func)
 {
     Task_t *task = Find(func);
     if (task == NULL)
@@ -209,7 +209,7 @@ bool MillisTaskManager::Logout(TaskFunction_t func)
   * @param  state:任务状态
   * @retval true:成功 ; false:失败
   */
-bool MillisTaskManager::SetState(TaskFunction_t func, bool state)
+bool OSTask::SetState(TaskFunction_t func, bool state)
 {
     Task_t *task = Find(func);
     if (task == NULL)
@@ -225,7 +225,7 @@ bool MillisTaskManager::SetState(TaskFunction_t func, bool state)
   * @param  timeMs:任务执行周期
   * @retval true:成功 ; false:失败
   */
-bool MillisTaskManager::SetIntervalTime(TaskFunction_t func, uint32_t timeMs)
+bool OSTask::SetIntervalTime(TaskFunction_t func, uint32_t timeMs)
 {
     Task_t *task = Find(func);
     if (task == NULL)
@@ -243,7 +243,7 @@ static uint32_t UserFuncLoopUs = 0; //累计时间
   * @param  无
   * @retval CPU占用率，0~100%
   */
-float MillisTaskManager::GetCPU_Usage()
+float OSTask::GetCPU_Usage()
 {
     static uint32_t MtmStartUs;
     float usage = (float)UserFuncLoopUs / (micros() - MtmStartUs) * 100.0f;
@@ -263,7 +263,7 @@ float MillisTaskManager::GetCPU_Usage()
   * @param  prevTick:上一个时间
   * @retval 时间差
   */
-uint32_t MillisTaskManager::GetTickElaps(uint32_t nowTick, uint32_t prevTick)
+uint32_t OSTask::GetTickElaps(uint32_t nowTick, uint32_t prevTick)
 {
     uint32_t actTime = nowTick;
 
@@ -284,7 +284,7 @@ uint32_t MillisTaskManager::GetTickElaps(uint32_t nowTick, uint32_t prevTick)
   * @param  func:任务函数指针
   * @retval 任务单次耗费时间(us)
   */
-uint32_t MillisTaskManager::GetTimeCost(TaskFunction_t func)
+uint32_t OSTask::GetTimeCost(TaskFunction_t func)
 {
     Task_t *task = Find(func);
     if (task == NULL)
@@ -298,7 +298,7 @@ uint32_t MillisTaskManager::GetTimeCost(TaskFunction_t func)
   * @param  tick:提供一个精确到毫秒的系统时钟变量
   * @retval 无
   */
-void MillisTaskManager::Running(uint32_t tick)
+void OSTask::Running(uint32_t tick)
 {
     Task_t *now = Head;
     while (true)

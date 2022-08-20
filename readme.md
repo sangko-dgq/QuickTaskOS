@@ -1,8 +1,18 @@
+
+
+### Framework
+
+![freamwork](./docs\markdown_imgs\freamwork.png)
+
+
+
+
+
 ## HOW TO USE 
 
 ### 1 . (ENV. : Arduino)
 
-#### HAL - Create Hardware Device
+#### HAL - Abstract a hardware Device
 
 ```c++
 #include "HAL.h"
@@ -44,7 +54,7 @@ void led_init()
 }
 ```
 
-#### APP - Create APP Device
+#### APP - Abstract a software device
 
 ```c++
 #include "MillisTaskManager.h"
@@ -75,6 +85,7 @@ void APP_Update()
 
 void setup()
 {
+    BSP_Init();
     HAL_Init();
     APP_Init();
 }

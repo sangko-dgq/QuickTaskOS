@@ -12,9 +12,7 @@
 void HAL_Init();
 
 /* HAL - Led */
-
-
-void led_init();
+void led_device_init();
 
 
 

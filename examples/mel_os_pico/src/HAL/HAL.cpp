@@ -6,7 +6,9 @@
 
 void HAL_Init()
 {
-    led_init();
+   led_device_init();
+
+
 }
 
 

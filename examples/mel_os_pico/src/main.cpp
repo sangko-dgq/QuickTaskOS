@@ -5,11 +5,9 @@
 
 void setup()
 {
-    Serial.begin(115200);
-
+//    Serial.begin(115200);
     HAL_Init();
     APP_Init();
-
 }
 
 void loop()
