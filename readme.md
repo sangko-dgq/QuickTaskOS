@@ -18,7 +18,7 @@
 
 #### Main - Init HAL & APP
 
- [template.cpp](src\template.cpp)  [template.h](src\template.h) 
+ [template.cpp](./src/template.cpp)  [template.h](./src/template.h) 
 
 ### 2. (ENV. : STC32G)
 
