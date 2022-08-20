@@ -10,7 +10,7 @@ set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_C_COMPILER_WORKS 1)
 set(CMAKE_CXX_COMPILER_WORKS 1)
 
-project("mel_os_pico" C CXX)
+project("pico_test" C CXX)
 
 include(CMakeListsPrivate.txt)
 
@@ -30,4 +30,4 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-add_executable(Z_DUMMY_TARGET ${SRC_LIST} lib/mel_os/m_device.c lib/mel_os/m_device.c lib/mel_os/m_device.h src/HAL/HAL.cpp src/HAL/HAL.h src/HAL/HAL_Led.cpp src/APP/APP.cpp src/APP/APP.h src/CONFIG/config.h lib/MillisTaskManager/MillisTaskManager.cpp lib/MillisTaskManager/MillisTaskManager.h)
+add_executable(Z_DUMMY_TARGET ${SRC_LIST} src/HAL/HAL_LED.cpp src/HAL/HAL.cpp src/HAL/HAL.h)

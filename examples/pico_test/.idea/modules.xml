@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/mel_os_pico.iml" filepath="$PROJECT_DIR$/.idea/mel_os_pico.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pico_test.iml" filepath="$PROJECT_DIR$/.idea/pico_test.iml" />
     </modules>
   </component>
 </project>
