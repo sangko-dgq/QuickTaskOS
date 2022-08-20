@@ -2,7 +2,7 @@
 
 ### Framework
 
-![freamwork](./docs\markdown_imgs\freamwork.png)
+![freamwork](docs/markdown_imgs/freamwork.png)
 
 
 
